@@ -15,7 +15,7 @@ jobs:
                   export POSTFIX=""
                 else
                   export GIT_LAST_COMMIT=`git rev-parse --short=7 HEAD`
-                  export POSTFIX="-${CIRCLE_BRANCH}-${GIT_LAST_COMMIT}"
+                  export POSTFIX="-${(echo $CIRCLE_BRANCH | sed 's/\//_/g')}-${GIT_LAST_COMMIT}"
                 fi
                 cd ..
                 mkdir release

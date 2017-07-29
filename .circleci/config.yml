@@ -9,10 +9,17 @@ jobs:
          - run:
             name: Create release
             command: |
-                export GIT_LAST_COMMIT=`git rev-parse --short=7 HEAD`
+                export ADDON_VERSION=`grep -w id addon.xml | cut -d\" -f6`
+                if [[ ${} -eq "master" ]]
+                then
+                  export GIT_LAST_COMMIT=`git rev-parse --short=7 HEAD`
+                  export POSTFIX="-${CIRCLE_BRANCH}-${GIT_LAST_COMMIT}"
+                else
+                  export POSTFIX=""
+                fi
                 cd ..
                 mkdir release
-                zip -r ~/release/plugin.audio.opencast-${CIRCLE_BRANCH}-${GIT_LAST_COMMIT}.zip plugin.audio.opencast -x "*.git/*" "*.gitignore" "*.circleci/*"
+                zip -r ~/release/plugin.audio.opencast-${ADDON_VERSION}${POSTFIX}.zip plugin.audio.opencast -x "*.git/*" "*.gitignore" "*.circleci/*"
          - store_artifacts:
             path: ~/release/
             destination: /release/

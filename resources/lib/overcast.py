@@ -21,8 +21,6 @@
 
 
 import json
-import re
-import sys
 import urllib
 import urllib2
 
@@ -72,8 +70,8 @@ class Overcast(object):
 
     def episode(self, url):
         soup = self._readsoup(url)
-        return {'url': soup.find('audio', id='audioplayer').source['src'], 
-                'artworkURL': soup.find('img', class_='fullart')['src'], 
+        return {'url': soup.find('audio', id='audioplayer').source['src'],
+                'artworkURL': soup.find('img', class_='fullart')['src'],
                 'title': unicode(soup.find('div', class_='titlestack').find('div', class_='title').string),
                 'podcastTitle': unicode(soup.find('div', class_='titlestack').find('div', class_='caption2').string)}
 

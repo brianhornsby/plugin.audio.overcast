@@ -1,8 +1,8 @@
 #/*
 # *
-# * TuneIn Radio for Kodi.
+# * Overcast for Kodi.
 # *
-# * Copyright (C) 2015 Brian Hornsby
+# * Copyright (C) 2017 Brian Hornsby
 # *
 # * This program is free software: you can redistribute it and/or modify
 # * it under the terms of the GNU General Public License as published by
@@ -40,10 +40,10 @@ def check_value(value):
     return normalize_unicode(value)
 
 
-def get_value(tuple, key):
-    if key not in tuple:
+def get_value(tuple_, key):
+    if key not in tuple_:
         return ''
-    return check_value(tuple[key])
+    return check_value(tuple_[key])
 
 
 def check_int(value):
@@ -52,10 +52,10 @@ def check_int(value):
     return value
 
 
-def get_int(tuple, key):
-    if key not in tuple:
+def get_int(tuple_, key):
+    if key not in tuple_:
         return 0
-    return int(check_value(tuple[key]))
+    return int(check_value(tuple_[key]))
 
 
 def add_params(root, params):
@@ -80,9 +80,9 @@ def ok(heading, line1, line2='', line3=''):
     dialog.ok(heading, line1, line2, line3)
 
 
-def select(heading, list):
+def select(heading, list_):
     dialog = xbmcgui.Dialog()
-    return dialog.select(heading, list)
+    return dialog.select(heading, list_)
 
 
 def yesno(heading, line1, line2='', line3=''):

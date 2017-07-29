@@ -22,15 +22,9 @@
 import xbmc
 import xbmcgui
 import xbmcplugin
-import ast
-import os
-import urllib
-import urllib2
-import re
 
-sys.path.append('resourceslib')
-import resources.lib.cache as cache
-import resources.lib.kodidownload as download
+import urllib2
+
 import resources.lib.kodisettings as settings
 import resources.lib.kodiutils as utils
 import resources.lib.overcast as overcast
@@ -113,7 +107,7 @@ elif __path__ == 'search':
             for podcast in podcasts:
                 liz = xbmcgui.ListItem(podcast['title'], iconImage=podcast[
                                        'thumbURL'], thumbnailImage=podcast['artworkURL'])
-                liz.addContextMenuItems(items=contextmenu, replaceItems=True)
+                liz.addContextMenuItems(items=contextmenu)
                 u = utils.add_params(
                     root=__settings__.get_argv(0), params={'path': 'podcast', 'url': '/p' + podcast['id'] + '-' + podcast['hash']})
                 ok = xbmcplugin.addDirectoryItem(handle=int(__settings__.get_argv(1)),
@@ -141,7 +135,7 @@ else:
     for episode in __overcast__.active_episodes():
         liz = xbmcgui.ListItem(episode['title'], iconImage=episode[
                                'thumbURL'], thumbnailImage=episode['thumbURL'])
-        liz.addContextMenuItems(items=contextmenu, replaceItems=True)
+        liz.addContextMenuItems(items=contextmenu)
         u = utils.add_params(
             root=__settings__.get_argv(0), params={'path': 'episode', 'url': episode['url']})
         ok = xbmcplugin.addDirectoryItem(handle=int(__settings__.get_argv(1)),
@@ -152,7 +146,7 @@ else:
     for podcast in __overcast__.podcasts():
         liz = xbmcgui.ListItem(podcast['title'], iconImage=podcast[
                                'thumbURL'], thumbnailImage=podcast['thumbURL'])
-        liz.addContextMenuItems(items=contextmenu, replaceItems=True)
+        liz.addContextMenuItems(items=contextmenu)
         u = utils.add_params(
             root=__settings__.get_argv(0), params={'path': 'podcast', 'url': podcast['url']})
         ok = xbmcplugin.addDirectoryItem(handle=int(__settings__.get_argv(1)),
@@ -162,8 +156,9 @@ else:
 
     iconImage = __settings__.get_path('resources/images/search-32.png')
     thumbnailImage = __settings__.get_path('resources/images/search-256.png')
-    liz = xbmcgui.ListItem(__settings__.get_string(1000), iconImage=iconImage, thumbnailImage=thumbnailImage)
-    liz.addContextMenuItems(items=contextmenu, replaceItems=True)
+    liz = xbmcgui.ListItem(__settings__.get_string(
+        1000), iconImage=iconImage, thumbnailImage=thumbnailImage)
+    liz.addContextMenuItems(items=contextmenu)
     u = utils.add_params(
         root=__settings__.get_argv(0), params={'path': 'search'})
     ok = xbmcplugin.addDirectoryItem(handle=int(

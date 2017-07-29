@@ -1,8 +1,8 @@
 #/*
 # *
-# * TuneIn Radio for Kodi.
+# * Overcast for Kodi.
 # *
-# * Copyright (C) 2015 Brian Hornsby
+# * Copyright (C) 2017 Brian Hornsby
 # *
 # * This program is free software: you can redistribute it and/or modify
 # * it under the terms of the GNU General Public License as published by
@@ -25,11 +25,11 @@ import time
 
 
 class Cache:
-    def __init__(self, path, filename, max=None):
+    def __init__(self, path, filename, max_=None):
         if not os.path.exists(path):
             os.makedirs(path)
         self.cachedb = os.path.join(path, filename)
-        self.max = max
+        self.max = max_
 
     def add(self, item, field=None):
         cache = self.get()

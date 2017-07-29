@@ -1,8 +1,8 @@
 #/*
 # *
-# * TuneIn Radio for Kodi.
+# * Overcast for Kodi.
 # *
-# * Copyright (C) 2015 Brian Hornsby
+# * Copyright (C) 2017 Brian Hornsby
 # *
 # * This program is free software: you can redistribute it and/or modify
 # * it under the terms of the GNU General Public License as published by
@@ -34,8 +34,8 @@ class Settings:
         self.__path__ = self.__addon__.getAddonInfo('path')
         self.__version__ = self.__addon__.getAddonInfo('version')
 
-    def get_string(self, id):
-        return self.__addon__.getLocalizedString(id)
+    def get_string(self, id_):
+        return self.__addon__.getLocalizedString(id_)
 
     def get(self, key):
         value = self.__addon__.getSetting(key)

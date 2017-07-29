@@ -1,8 +1,8 @@
 #/*
 # *
-# * TuneIn Radio for Kodi.
+# * Overcast for Kodi.
 # *
-# * Copyright (C) 2015 Brian Hornsby
+# * Copyright (C) 2017 Brian Hornsby
 # *
 # * This program is free software: you can redistribute it and/or modify
 # * it under the terms of the GNU General Public License as published by
@@ -54,7 +54,7 @@ def __download(url, path, addonsettings, progressdialog=None, chunk_size=8192, c
             xbmc.log('[Kodi Download] File already exists. Do not overwrite.',
                      xbmc.LOGINFO)
             return (False, downloadfile)
-    file = open(downloadfile, 'wb')
+    file_ = open(downloadfile, 'wb')
     while 1:
         chunk = response.read(chunk_size)
         bytes_so_far += len(chunk)
@@ -67,11 +67,11 @@ def __download(url, path, addonsettings, progressdialog=None, chunk_size=8192, c
                 os.remove(downloadfile)
             result = False
             break
-        file.write(chunk)
+        file_.write(chunk)
         if reporthook:
             reporthook(addonsettings, progressdialog,
                        downloadfile, bytes_so_far, chunk_size, total_size)
-    file.close()
+    file_.close()
     return (result, downloadfile)
 
 

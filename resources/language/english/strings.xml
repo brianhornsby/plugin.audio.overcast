@@ -3,8 +3,6 @@
 	<!--Labels-->
 	<string id="1000">Search</string>
 	<string id="1001">Refresh</string>
-	<string id="1002">Download</string>
-	<string id="1003">Delete</string>
 
 	<!--Settings-->
 	<string id="2000">Email</string>

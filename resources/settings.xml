@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="2500">
+		<setting id="email" type="text" label="2000" default=""/>
+		<setting id="password" type="text" option="hidden" label="2001" enable="!eq(-1,)" default=""/>
+	</category>
+	<category label="2501">
+		<setting id="prompt" type="bool" label="2007" default="true"/>
+	</category>
+	<category label="2502">
+		<setting id="debuglevel" type="enum" label="2002" default="0" lvalues="2003|2004|2005|2006"/>
+	</category>
+</settings>

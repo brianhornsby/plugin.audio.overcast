@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>	
+	<!--Labels-->
+	<string id="1000">Search</string>
+	<string id="1001">Refresh</string>
+	<string id="1002">Download</string>
+	<string id="1003">Delete</string>
+
+	<!--Settings-->
+	<string id="2000">Email</string>
+	<string id="2001">Password</string>
+	<string id="2002">Debug Level</string>
+	<string id="2003">None</string>
+	<string id="2004">Low</string>
+	<string id="2005">Medium</string>
+	<string id="2006">High</string>
+	<string id="2007">Prompt When Changing Station</string>
+
+	<!-- Settings Titles -->
+	<string id="2500">Overcast</string>
+	<string id="2501">General</string>
+	<string id="2502">Advanced</string>
+
+	<!--Dialogs-->
+	<string id="3000">Enter podcast name</string>
+	<string id="3001">Do you want to play podcast?</string>
+	<string id="3002">Network error.</string>
+	<string id="3003">See kodi.log for more information.</string>
+	<string id="3004">Overcast error.</string>
+</strings>

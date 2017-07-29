@@ -10,12 +10,12 @@ jobs:
             name: Create release
             command: |
                 export ADDON_VERSION=`grep -w id addon.xml | cut -d\" -f6`
-                if [[ ${} -eq "master" ]]
+                if [[ ${CIRCLE_BRANCH} -eq "master" ]]
                 then
+                  export POSTFIX=""
+                else
                   export GIT_LAST_COMMIT=`git rev-parse --short=7 HEAD`
                   export POSTFIX="-${CIRCLE_BRANCH}-${GIT_LAST_COMMIT}"
-                else
-                  export POSTFIX=""
                 fi
                 cd ..
                 mkdir release

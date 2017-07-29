@@ -1,0 +1,18 @@
+version: 2
+jobs:
+   build:
+      docker:
+         - image: circleci/python:2
+      working_directory: ~/plugin.audio.opencast
+      steps:
+         - checkout
+         - run:
+            name: Create release
+            command: |
+                export GIT_LAST_COMMIT=`git rev-parse --short=7 HEAD`
+                cd ..
+                mkdir release
+                zip -r ~/release/plugin.audio.opencast-${CIRCLE_BRANCH}-${GIT_LAST_COMMIT}.zip plugin.audio.opencast -x "*.git/*" "*.gitignore" "*.circleci/*"
+         - store_artifacts:
+            path: ~/release/
+            destination: /release/

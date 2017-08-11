@@ -104,22 +104,21 @@ elif __path__ == 'search':
             podcasts = __overcast__.search(searchstring)
             contextmenu = [(__settings__.get_string(
                 1001), 'XBMC.RunPlugin(%s?path=refresh)' % (__settings__.get_argv(0)))]
-            for podcast in podcasts:
-                liz = xbmcgui.ListItem(podcast['title'], iconImage=podcast[
-                                       'thumbURL'], thumbnailImage=podcast['artworkURL'])
-                liz.addContextMenuItems(items=contextmenu)
-                u = utils.add_params(
-                    root=__settings__.get_argv(0), params={'path': 'podcast', 'url': '/p' + podcast['id'] + '-' + podcast['hash']})
-                ok = xbmcplugin.addDirectoryItem(handle=int(__settings__.get_argv(1)),
-                                                 url=u,
-                                                 listitem=liz,
-                                                 isFolder=True)
-            xbmcplugin.endOfDirectory(int(__settings__.get_argv(1)))
+            if len(podcasts) > 0:
+                for podcast in podcasts:
+                    liz = xbmcgui.ListItem(podcast['title'], iconImage=podcast[
+                                           'thumbURL'], thumbnailImage=podcast['artworkURL'])
+                    liz.addContextMenuItems(items=contextmenu)
+                    u = utils.add_params(
+                        root=__settings__.get_argv(0), params={'path': 'podcast', 'url': '/p' + podcast['id'] + '-' + podcast['hash']})
+                    ok = xbmcplugin.addDirectoryItem(handle=int(__settings__.get_argv(1)),
+                                                     url=u,
+                                                     listitem=liz,
+                                                     isFolder=True)
+                xbmcplugin.endOfDirectory(int(__settings__.get_argv(1)))
+            else:
+                utils.ok(__addonname__, __settings__.get_string(3004) % searchstring)
 
-    # except __overcast__.TuneInError as e:
-    #     utils.ok(__addonname__, __settings__.get_string(3004),
-    #              __settings__.get_string(3003))
-    #     log_error('TuneInError: %s %s' % (e.status, e.fault))
     except urllib2.URLError as e:
         utils.ok(__addonname__, __settings__.get_string(3002),
                  __settings__.get_string(3003))

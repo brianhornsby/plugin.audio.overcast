@@ -24,5 +24,5 @@
 	<string id="3001">Do you want to play podcast?</string>
 	<string id="3002">Network error.</string>
 	<string id="3003">See kodi.log for more information.</string>
-	<string id="3004">Overcast error.</string>
+	<string id="3004">No Results found for '%s'.</string>
 </strings>
